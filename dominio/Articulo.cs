@@ -14,6 +14,6 @@ namespace dominio
         public string Descripcion  { get; set; }
         public int IdMarca { get; set; }
         public int IdCategoria { get; set; }
-        public float Precio { get; set; }
+        public decimal Precio { get; set; }
     }
 }

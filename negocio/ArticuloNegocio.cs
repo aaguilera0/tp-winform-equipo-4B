@@ -22,7 +22,8 @@ namespace negocio
 
             try
             {
-                conexion.ConnectionString = " Server = localhost,1433; Database = CATALOGO_P3_DB; User Id = sa; Password = BaseDeDatos#2;TrustServerCertificate=True;";
+                //conexion.ConnectionString = " Server = localhost,1433; Database = CATALOGO_P3_DB; User Id = sa; Password = BaseDeDatos#2;TrustServerCertificate=True;";
+                conexion.ConnectionString = " Server = localhost,1433; Database = CATALOGO_P3_DB; User Id = sa; Password = Facu-123456;TrustServerCertificate=True;";
                 comando.CommandType = System.Data.CommandType.Text;
                 comando.CommandText = "SELECT Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio From ARTICULOS \r\n";
                 comando.Connection = conexion;
@@ -39,6 +40,7 @@ namespace negocio
                     aux.Descripcion = (string)lector["Descripcion"];
                     aux.IdMarca = lector.GetInt32(4);
                     aux.IdCategoria = lector.GetInt32(5);
+                    aux.Precio = (decimal)lector["Precio"];
                     // FALTA EL PRECIO // 
 
                     lista.Add(aux); 
