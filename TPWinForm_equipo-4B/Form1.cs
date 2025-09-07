@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dominio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using negocio;
 namespace TPWinForm_equipo_4B
 {
     public partial class Form1 : Form
@@ -15,6 +16,13 @@ namespace TPWinForm_equipo_4B
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            dgvArticulo.DataSource = negocio.Listar(); 
+
         }
     }
 }
