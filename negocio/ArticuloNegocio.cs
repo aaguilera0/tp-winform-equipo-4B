@@ -18,7 +18,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("SELECT Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio From ARTICULOS");
+                datos.setearConsulta("SELECT A.Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio , E.ImagenUrl From ARTICULOS A, IMAGENES E  where E.IdArticulo = A.iD \r\n");
                 datos.ejecturaLectura();
 
                 while (datos.Lector.Read()) 
@@ -31,6 +31,8 @@ namespace negocio
                     aux.IdMarca = datos.Lector.GetInt32(4);
                     aux.IdCategoria = datos.Lector.GetInt32(5);
                     aux.Precio = (decimal)datos.Lector["Precio"];
+                    aux.imagen = new Imagen();
+                    aux.imagen.ImagenUrl = (string)datos.Lector["ImagenUrl"]; 
                     // FALTA EL PRECIO // 
 
                     lista.Add(aux);
