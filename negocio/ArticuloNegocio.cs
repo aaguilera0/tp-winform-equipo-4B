@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;    
+using System.Data.SqlClient;
+using System.Runtime.Remoting.Lifetime;
 
 namespace negocio
 {
@@ -13,6 +14,44 @@ namespace negocio
         public List<Articulo> Listar()
         {
             List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio From ARTICULOS");
+                datos.ejecturaLectura();
+
+                while (datos.Lector.Read()) 
+                {
+                    Articulo aux = new Articulo();
+                    aux.Id = datos.Lector.GetInt32(0);
+                    aux.Codigo = datos.Lector.GetString(1);
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.IdMarca = datos.Lector.GetInt32(4);
+                    aux.IdCategoria = datos.Lector.GetInt32(5);
+                    aux.Precio = (decimal)datos.Lector["Precio"];
+                    // FALTA EL PRECIO // 
+
+                    lista.Add(aux);
+
+
+                }
+                return lista;
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+
+            }
+            /*List<Articulo> lista = new List<Articulo>();
 
             SqlConnection conexion = new SqlConnection();
             SqlCommand comando = new SqlCommand();
@@ -22,10 +61,10 @@ namespace negocio
 
             try
             {
-                //conexion.ConnectionString = " Server = localhost,1433; Database = CATALOGO_P3_DB; User Id = sa; Password = BaseDeDatos#2;TrustServerCertificate=True;";
-                conexion.ConnectionString = " Server = localhost,1433; Database = CATALOGO_P3_DB; User Id = sa; Password = Facu-123456;TrustServerCertificate=True;";
+                conexion.ConnectionString = " Server = localhost,1433; Database = CATALOGO_P3_DB; User Id = sa; Password = BaseDeDatos#2;TrustServerCertificate=True;";
+                //conexion.ConnectionString = " Server = localhost,1433; Database = CATALOGO_P3_DB; User Id = sa; Password = Facu-123456;TrustServerCertificate=True;";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "SELECT Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio From ARTICULOS \r\n";
+                comando.CommandText = "SELECT Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio From ARTICULOS";
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -54,7 +93,7 @@ namespace negocio
             {
 
                 throw ex ;
-            }
+            }*/
         }
     }
 }

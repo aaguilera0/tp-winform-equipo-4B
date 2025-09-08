@@ -36,11 +36,10 @@ namespace TPWinForm_equipo_4B
             // dgvArticulo
             // 
             this.dgvArticulo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArticulo.Location = new System.Drawing.Point(45, 41);
+            this.dgvArticulo.Location = new System.Drawing.Point(12, 12);
             this.dgvArticulo.Name = "dgvArticulo";
             this.dgvArticulo.Size = new System.Drawing.Size(655, 276);
             this.dgvArticulo.TabIndex = 0;
-            
             // 
             // Form1
             // 
