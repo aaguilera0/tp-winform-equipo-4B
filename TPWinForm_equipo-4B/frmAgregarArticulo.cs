@@ -34,6 +34,7 @@ namespace TPWinForm_equipo_4B
                 articulo.Codigo = txtCodigoArticulo.Text;
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
+                articulo.IdCategoria = (Categoria)cbCategoria.SelectedItem;
                 articulo.Precio = decimal.Parse(txtPrecio.Text);
 
                 negocio.Agregar(articulo);
@@ -43,6 +44,20 @@ namespace TPWinForm_equipo_4B
             catch (Exception ex)
             {
 
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void frmAgregarArticulo_Load(object sender, EventArgs e)
+        {
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+
+            try
+            {
+                cbCategoria.DataSource = categoriaNegocio.listar();
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.ToString());
             }
         }

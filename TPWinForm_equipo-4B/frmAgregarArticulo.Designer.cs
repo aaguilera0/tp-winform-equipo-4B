@@ -41,11 +41,13 @@ namespace TPWinForm_equipo_4B
             this.lblPrecio = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.cbMarca = new System.Windows.Forms.ComboBox();
+            this.cbCategoria = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // txtCodigoArticulo
             // 
-            this.txtCodigoArticulo.Location = new System.Drawing.Point(139, 74);
+            this.txtCodigoArticulo.Location = new System.Drawing.Point(170, 101);
             this.txtCodigoArticulo.Name = "txtCodigoArticulo";
             this.txtCodigoArticulo.Size = new System.Drawing.Size(128, 20);
             this.txtCodigoArticulo.TabIndex = 0;
@@ -53,7 +55,7 @@ namespace TPWinForm_equipo_4B
             // lblCodigoArticulo
             // 
             this.lblCodigoArticulo.AutoSize = true;
-            this.lblCodigoArticulo.Location = new System.Drawing.Point(40, 77);
+            this.lblCodigoArticulo.Location = new System.Drawing.Point(71, 104);
             this.lblCodigoArticulo.Name = "lblCodigoArticulo";
             this.lblCodigoArticulo.Size = new System.Drawing.Size(93, 13);
             this.lblCodigoArticulo.TabIndex = 1;
@@ -61,21 +63,21 @@ namespace TPWinForm_equipo_4B
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(139, 113);
+            this.txtNombre.Location = new System.Drawing.Point(170, 140);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(128, 20);
             this.txtNombre.TabIndex = 2;
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(139, 150);
+            this.txtDescripcion.Location = new System.Drawing.Point(170, 177);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(128, 20);
             this.txtDescripcion.TabIndex = 3;
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(139, 267);
+            this.txtPrecio.Location = new System.Drawing.Point(170, 294);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(128, 20);
             this.txtPrecio.TabIndex = 6;
@@ -83,7 +85,7 @@ namespace TPWinForm_equipo_4B
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(58, 113);
+            this.lblNombre.Location = new System.Drawing.Point(89, 140);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(44, 13);
             this.lblNombre.TabIndex = 7;
@@ -92,7 +94,7 @@ namespace TPWinForm_equipo_4B
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(58, 150);
+            this.lblDescripcion.Location = new System.Drawing.Point(89, 177);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(63, 13);
             this.lblDescripcion.TabIndex = 8;
@@ -101,7 +103,7 @@ namespace TPWinForm_equipo_4B
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(58, 189);
+            this.lblMarca.Location = new System.Drawing.Point(89, 216);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(37, 13);
             this.lblMarca.TabIndex = 9;
@@ -110,7 +112,7 @@ namespace TPWinForm_equipo_4B
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(58, 227);
+            this.lblCategoria.Location = new System.Drawing.Point(89, 254);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(54, 13);
             this.lblCategoria.TabIndex = 10;
@@ -119,7 +121,7 @@ namespace TPWinForm_equipo_4B
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(58, 267);
+            this.lblPrecio.Location = new System.Drawing.Point(89, 294);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(37, 13);
             this.lblPrecio.TabIndex = 11;
@@ -145,11 +147,31 @@ namespace TPWinForm_equipo_4B
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // cbMarca
+            // 
+            this.cbMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMarca.FormattingEnabled = true;
+            this.cbMarca.Location = new System.Drawing.Point(170, 216);
+            this.cbMarca.Name = "cbMarca";
+            this.cbMarca.Size = new System.Drawing.Size(128, 21);
+            this.cbMarca.TabIndex = 14;
+            // 
+            // cbCategoria
+            // 
+            this.cbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCategoria.FormattingEnabled = true;
+            this.cbCategoria.Location = new System.Drawing.Point(170, 254);
+            this.cbCategoria.Name = "cbCategoria";
+            this.cbCategoria.Size = new System.Drawing.Size(128, 21);
+            this.cbCategoria.TabIndex = 15;
+            // 
             // frmAgregarArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(407, 477);
+            this.Controls.Add(this.cbCategoria);
+            this.Controls.Add(this.cbMarca);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.lblPrecio);
@@ -164,6 +186,7 @@ namespace TPWinForm_equipo_4B
             this.Controls.Add(this.txtCodigoArticulo);
             this.Name = "frmAgregarArticulo";
             this.Text = "Nuevo Articulo";
+            this.Load += new System.EventHandler(this.frmAgregarArticulo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,5 +206,7 @@ namespace TPWinForm_equipo_4B
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.ComboBox cbMarca;
+        private System.Windows.Forms.ComboBox cbCategoria;
     }
 }
