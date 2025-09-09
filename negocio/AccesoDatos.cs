@@ -18,6 +18,7 @@ namespace negocio
         }
         public AccesoDatos()
         {
+            
             conexion = new SqlConnection("Server = localhost, 1433; Database = CATALOGO_P3_DB; User Id = sa; Password = BaseDeDatos#2;TrustServerCertificate=True;");
             comando = new SqlCommand();
             
@@ -45,6 +46,19 @@ namespace negocio
                 throw ex;
             }
 
+        }
+        public void ejecutarAccion()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void cerrarConexion()

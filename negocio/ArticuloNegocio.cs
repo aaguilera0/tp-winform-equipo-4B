@@ -18,10 +18,10 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("SELECT A.Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio , E.ImagenUrl From ARTICULOS A, IMAGENES E  where E.IdArticulo = A.iD \r\n");
+                datos.setearConsulta("SELECT A.Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio, E.ImagenUrl FROM ARTICULOS A, IMAGENES E WHERE E.IdArticulo = A.Id");
                 datos.ejecturaLectura();
 
-                while (datos.Lector.Read()) 
+                while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
                     aux.Id = datos.Lector.GetInt32(0);
@@ -32,70 +32,42 @@ namespace negocio
                     aux.IdCategoria = datos.Lector.GetInt32(5);
                     aux.Precio = (decimal)datos.Lector["Precio"];
                     aux.imagen = new Imagen();
-                    aux.imagen.ImagenUrl = (string)datos.Lector["ImagenUrl"]; 
-                    // FALTA EL PRECIO // 
+                    aux.imagen.ImagenUrl = (string)datos.Lector["ImagenUrl"];
 
                     lista.Add(aux);
-
-
                 }
+
                 return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
+        public void Agregar(Articulo nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
 
+            try
+            {
+                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, Precio) values('" + nuevo.Codigo + "', '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', " + nuevo.Precio + ")");
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {
 
                 throw ex;
             }
-            finally
+            finally 
             {
                 datos.cerrarConexion();
-
             }
-            /*List<Articulo> lista = new List<Articulo>();
-
-            SqlConnection conexion = new SqlConnection();
-            SqlCommand comando = new SqlCommand();
-            SqlDataReader lector; 
-
-
-
-            try
-            {
-                conexion.ConnectionString = " Server = localhost,1433; Database = CATALOGO_P3_DB; User Id = sa; Password = BaseDeDatos#2;TrustServerCertificate=True;";
-                //conexion.ConnectionString = " Server = localhost,1433; Database = CATALOGO_P3_DB; User Id = sa; Password = Facu-123456;TrustServerCertificate=True;";
-                comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "SELECT Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio From ARTICULOS";
-                comando.Connection = conexion;
-
-                conexion.Open();
-                lector = comando.ExecuteReader();
-                
-                while (lector.Read())
-                {
-                    Articulo aux = new Articulo();
-                    aux.Id = lector.GetInt32(0);
-                    aux.Codigo = lector.GetString(1);
-                    aux.Nombre = (string)lector["Nombre"];
-                    aux.Descripcion = (string)lector["Descripcion"];
-                    aux.IdMarca = lector.GetInt32(4);
-                    aux.IdCategoria = lector.GetInt32(5);
-                    aux.Precio = (decimal)lector["Precio"];
-                    // FALTA EL PRECIO // 
-
-                    lista.Add(aux); 
-                }
-
-                conexion.Close();
-
-                return lista;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex ;
-            }*/
         }
     }
 }
+

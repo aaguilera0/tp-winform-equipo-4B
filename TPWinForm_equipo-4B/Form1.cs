@@ -50,6 +50,12 @@ namespace TPWinForm_equipo_4B
                 pcbArticulo.Load("https://e1.pngegg.com/pngimages/50/931/png-clipart-through-the-ages-empty-street-thumbnail.png");
             }
         }
+
+        private void bttAgregar_Click(object sender, EventArgs e)
+        {
+            frmAgregarArticulo alta = new frmAgregarArticulo();
+            alta.ShowDialog();
+        }
     }
 }
 

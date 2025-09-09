@@ -31,6 +31,7 @@ namespace TPWinForm_equipo_4B
         {
             this.dgvArticulo = new System.Windows.Forms.DataGridView();
             this.pcbArticulo = new System.Windows.Forms.PictureBox();
+            this.bttAgregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbArticulo)).BeginInit();
             this.SuspendLayout();
@@ -43,7 +44,6 @@ namespace TPWinForm_equipo_4B
             this.dgvArticulo.Size = new System.Drawing.Size(553, 180);
             this.dgvArticulo.TabIndex = 0;
             this.dgvArticulo.SelectionChanged += new System.EventHandler(this.dgvArticulo_SelectionChanged);
-           
             // 
             // pcbArticulo
             // 
@@ -54,11 +54,22 @@ namespace TPWinForm_equipo_4B
             this.pcbArticulo.TabIndex = 1;
             this.pcbArticulo.TabStop = false;
             // 
+            // bttAgregar
+            // 
+            this.bttAgregar.Location = new System.Drawing.Point(45, 378);
+            this.bttAgregar.Name = "bttAgregar";
+            this.bttAgregar.Size = new System.Drawing.Size(92, 31);
+            this.bttAgregar.TabIndex = 2;
+            this.bttAgregar.Text = "Agregar";
+            this.bttAgregar.UseVisualStyleBackColor = true;
+            this.bttAgregar.Click += new System.EventHandler(this.bttAgregar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bttAgregar);
             this.Controls.Add(this.pcbArticulo);
             this.Controls.Add(this.dgvArticulo);
             this.Name = "Form1";
@@ -74,6 +85,7 @@ namespace TPWinForm_equipo_4B
 
         private System.Windows.Forms.DataGridView dgvArticulo;
         private System.Windows.Forms.PictureBox pcbArticulo;
+        private System.Windows.Forms.Button bttAgregar;
     }
 }
 
