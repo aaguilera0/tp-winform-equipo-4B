@@ -56,6 +56,24 @@ namespace TPWinForm_equipo_4B
             frmAgregarArticulo alta = new frmAgregarArticulo();
             alta.ShowDialog();
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+
+            Articulo seleccionado;
+            try
+            {
+                seleccionado = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
+                negocio.Eliminar(seleccionado.Id);
+                MessageBox.Show("Eliminado exitosamente.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+
+            }
+        }
     }
 }
 

@@ -32,6 +32,7 @@ namespace TPWinForm_equipo_4B
             this.dgvArticulo = new System.Windows.Forms.DataGridView();
             this.pcbArticulo = new System.Windows.Forms.PictureBox();
             this.bttAgregar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbArticulo)).BeginInit();
             this.SuspendLayout();
@@ -64,11 +65,22 @@ namespace TPWinForm_equipo_4B
             this.bttAgregar.UseVisualStyleBackColor = true;
             this.bttAgregar.Click += new System.EventHandler(this.bttAgregar_Click);
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(275, 378);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(92, 31);
+            this.btnEliminar.TabIndex = 3;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.bttAgregar);
             this.Controls.Add(this.pcbArticulo);
             this.Controls.Add(this.dgvArticulo);
@@ -86,6 +98,7 @@ namespace TPWinForm_equipo_4B
         private System.Windows.Forms.DataGridView dgvArticulo;
         private System.Windows.Forms.PictureBox pcbArticulo;
         private System.Windows.Forms.Button bttAgregar;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }
 
