@@ -25,8 +25,8 @@ namespace TPWinForm_equipo_4B
             listaArticulo= negocio.Listar();
             dgvArticulo.DataSource = listaArticulo;
             cargarImagen(listaArticulo[0].imagen.ImagenUrl);
-            dgvArticulo.Columns["IdCategoria"].Visible = false;
-            dgvArticulo.Columns["IdMarca"].Visible = false;
+            //dgvArticulo.Columns["IdCategoria"].Visible = false;
+            //dgvArticulo.Columns["IdMarca"].Visible = false;
             dgvArticulo.Columns["imagen"].Visible = false;
 
         }
@@ -57,6 +57,14 @@ namespace TPWinForm_equipo_4B
             alta.ShowDialog();
         }
 
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado;
+            seleccionado = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
+            frmAgregarArticulo modificar = new frmAgregarArticulo(seleccionado);
+            modificar.ShowDialog();
+        }
+
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
@@ -74,6 +82,8 @@ namespace TPWinForm_equipo_4B
 
             }
         }
+
+        
     }
 }
 
