@@ -43,6 +43,14 @@ namespace TPWinForm_equipo_4B
             this.btnCancelar = new System.Windows.Forms.Button();
             this.cbMarca = new System.Windows.Forms.ComboBox();
             this.cbCategoria = new System.Windows.Forms.ComboBox();
+            this.txtUrlImagen = new System.Windows.Forms.TextBox();
+            this.lblUrlImagen = new System.Windows.Forms.Label();
+            this.pbArticulo = new System.Windows.Forms.PictureBox();
+            this.dgvArticulo = new System.Windows.Forms.DataGridView();
+            this.btSavedImaged = new System.Windows.Forms.Button();
+            this.btDeletedImage = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pbArticulo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCodigoArticulo
@@ -129,7 +137,7 @@ namespace TPWinForm_equipo_4B
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(81, 403);
+            this.btnAceptar.Location = new System.Drawing.Point(348, 388);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(83, 31);
             this.btnAceptar.TabIndex = 12;
@@ -139,7 +147,7 @@ namespace TPWinForm_equipo_4B
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(232, 403);
+            this.btnCancelar.Location = new System.Drawing.Point(499, 388);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(83, 31);
             this.btnCancelar.TabIndex = 13;
@@ -165,11 +173,76 @@ namespace TPWinForm_equipo_4B
             this.cbCategoria.Size = new System.Drawing.Size(128, 21);
             this.cbCategoria.TabIndex = 15;
             // 
+            // txtUrlImagen
+            // 
+            this.txtUrlImagen.Location = new System.Drawing.Point(406, 294);
+            this.txtUrlImagen.Name = "txtUrlImagen";
+            this.txtUrlImagen.Size = new System.Drawing.Size(128, 20);
+            this.txtUrlImagen.TabIndex = 16;
+            // 
+            // lblUrlImagen
+            // 
+            this.lblUrlImagen.AutoSize = true;
+            this.lblUrlImagen.Location = new System.Drawing.Point(345, 297);
+            this.lblUrlImagen.Name = "lblUrlImagen";
+            this.lblUrlImagen.Size = new System.Drawing.Size(55, 13);
+            this.lblUrlImagen.TabIndex = 17;
+            this.lblUrlImagen.Text = "UrlImagen";
+            // 
+            // pbArticulo
+            // 
+            this.pbArticulo.Location = new System.Drawing.Point(654, 101);
+            this.pbArticulo.Name = "pbArticulo";
+            this.pbArticulo.Size = new System.Drawing.Size(218, 218);
+            this.pbArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbArticulo.TabIndex = 18;
+            this.pbArticulo.TabStop = false;
+            // 
+            // dgvArticulo
+            // 
+            this.dgvArticulo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvArticulo.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvArticulo.Location = new System.Drawing.Point(348, 101);
+            this.dgvArticulo.Name = "dgvArticulo";
+            this.dgvArticulo.Size = new System.Drawing.Size(246, 174);
+            this.dgvArticulo.TabIndex = 19;
+            this.dgvArticulo.SelectionChanged += new System.EventHandler(this.dgvArticulo_SelectionChanged);
+            // 
+            // btSavedImaged
+            // 
+            this.btSavedImaged.FlatAppearance.BorderSize = 0;
+            this.btSavedImaged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btSavedImaged.Image = global::TPWinForm_equipo_4B.Properties.Resources.Saved24x24;
+            this.btSavedImaged.Location = new System.Drawing.Point(540, 294);
+            this.btSavedImaged.Name = "btSavedImaged";
+            this.btSavedImaged.Size = new System.Drawing.Size(24, 24);
+            this.btSavedImaged.TabIndex = 20;
+            this.btSavedImaged.UseVisualStyleBackColor = true;
+            this.btSavedImaged.Click += new System.EventHandler(this.btSavedImaged_Click);
+            // 
+            // btDeletedImage
+            // 
+            this.btDeletedImage.FlatAppearance.BorderSize = 0;
+            this.btDeletedImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btDeletedImage.Image = global::TPWinForm_equipo_4B.Properties.Resources.Deleted24x24;
+            this.btDeletedImage.Location = new System.Drawing.Point(570, 294);
+            this.btDeletedImage.Name = "btDeletedImage";
+            this.btDeletedImage.Size = new System.Drawing.Size(24, 24);
+            this.btDeletedImage.TabIndex = 20;
+            this.btDeletedImage.UseVisualStyleBackColor = true;
+            this.btDeletedImage.Click += new System.EventHandler(this.btDeletedImage_Click);
+            // 
             // frmAgregarArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(407, 477);
+            this.ClientSize = new System.Drawing.Size(958, 477);
+            this.Controls.Add(this.btDeletedImage);
+            this.Controls.Add(this.btSavedImaged);
+            this.Controls.Add(this.dgvArticulo);
+            this.Controls.Add(this.pbArticulo);
+            this.Controls.Add(this.lblUrlImagen);
+            this.Controls.Add(this.txtUrlImagen);
             this.Controls.Add(this.cbCategoria);
             this.Controls.Add(this.cbMarca);
             this.Controls.Add(this.btnCancelar);
@@ -187,6 +260,8 @@ namespace TPWinForm_equipo_4B
             this.Name = "frmAgregarArticulo";
             this.Text = "Nuevo Articulo";
             this.Load += new System.EventHandler(this.frmAgregarArticulo_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbArticulo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,5 +283,11 @@ namespace TPWinForm_equipo_4B
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ComboBox cbMarca;
         private System.Windows.Forms.ComboBox cbCategoria;
+        private System.Windows.Forms.TextBox txtUrlImagen;
+        private System.Windows.Forms.Label lblUrlImagen;
+        private System.Windows.Forms.PictureBox pbArticulo;
+        private System.Windows.Forms.DataGridView dgvArticulo;
+        private System.Windows.Forms.Button btSavedImaged;
+        private System.Windows.Forms.Button btDeletedImage;
     }
 }

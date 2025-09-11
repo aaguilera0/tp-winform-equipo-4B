@@ -118,6 +118,33 @@ namespace negocio
                 throw ex;
             }
         }
+
+        public int ObtenerIdArticulo(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            int idArticulo = 0;
+
+            try
+            {
+                //select id from ARTICULOS where Codigo = 'S012'
+                datos.setearConsulta("select Id from ARTICULOS where Codigo = @cod");
+                datos.setearParametro("@cod", articulo.Codigo);
+                datos.ejecutarLectura();
+                if (datos.Lector.Read()) {
+                    return (int)datos.Lector["Id"];
+                } else {
+                    throw new Exception("No se encontró el id de artículo con ese código.");
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
 

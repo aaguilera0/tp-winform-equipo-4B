@@ -15,9 +15,11 @@ namespace TPWinForm_equipo_4B
     public partial class frmAgregarArticulo : Form
     {
         private Articulo articulo = null;
+        List<String> listUrlImg = new List<String>();
         public frmAgregarArticulo()
         {
             InitializeComponent();
+            
         }
 
         public frmAgregarArticulo(Articulo articulo)
@@ -37,6 +39,8 @@ namespace TPWinForm_equipo_4B
         {
             
             ArticuloNegocio negocio = new ArticuloNegocio();
+            ImagenNegocio negocioImg = new negocio.ImagenNegocio();
+            int idArticulo = 0;
 
             try
             {   
@@ -58,6 +62,8 @@ namespace TPWinForm_equipo_4B
                 else{
 
                     negocio.Agregar(articulo);
+                    idArticulo = negocio.ObtenerIdArticulo(articulo);
+                    negocioImg.Agregar(listUrlImg, idArticulo);
                     MessageBox.Show("Agregado exitosamente.");
 
                 }
@@ -76,6 +82,7 @@ namespace TPWinForm_equipo_4B
         {
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
             MarcaNegocio marcaNegocio = new MarcaNegocio();
+
 
             try
             {
@@ -102,6 +109,83 @@ namespace TPWinForm_equipo_4B
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void btSavedImaged_Click(object sender, EventArgs e)
+        {
+
+            try {
+                if (string.IsNullOrEmpty(txtUrlImagen.Text)) {
+                    MessageBox.Show("Ingrese url de imagen para guardar");
+                }
+                else {
+
+                    listUrlImg.Add(txtUrlImagen.Text);                                     
+                    cargarDGV();
+                    txtUrlImagen.Clear();
+
+                }                    
+
+            }catch (Exception ex){
+
+                throw ex;
+
+            }
+        }
+
+        private void cargarDGV()
+        {
+            int ultimoIndiceList = listUrlImg.Count - 1;
+            dgvArticulo.DataSource = null;
+            dgvArticulo.DataSource = listUrlImg;
+            dgvArticulo.ClearSelection();
+            dgvArticulo.Rows[ultimoIndiceList].Selected = true;
+            dgvArticulo.CurrentCell = dgvArticulo.Rows[ultimoIndiceList].Cells[0];
+            dgvArticulo.FirstDisplayedScrollingRowIndex = ultimoIndiceList;
+            cargarImagen(listUrlImg[ultimoIndiceList]);
+        }
+
+        private void cargarImagen(String imagen)
+        {
+            try
+            {
+                pbArticulo.Load(imagen);
+            }
+            catch (Exception)
+            {                
+                pbArticulo.Load("https://e1.pngegg.com/pngimages/50/931/png-clipart-through-the-ages-empty-street-thumbnail.png");
+            }
+        }
+
+        private void btDeletedImage_Click(object sender, EventArgs e)
+        {
+            try {
+
+                if (listUrlImg.Count > 0) {
+
+                    string urlImgBorrar = (string)dgvArticulo.CurrentRow.DataBoundItem; // o el índice correcto de columna
+                    int auxInd = listUrlImg.IndexOf(urlImgBorrar);
+                    listUrlImg.RemoveAt(auxInd);
+                    cargarDGV();
+
+                }
+                else {
+
+                    MessageBox.Show("No hay imagen para borrar");
+
+                }
+
+            } catch (Exception ex) {
+
+                MessageBox.Show("Error al borrar la imagen: " + ex.Message);
+
+            }
+        }
+
+        private void dgvArticulo_SelectionChanged(object sender, EventArgs e)
+        {
+            string urlImg = (string)dgvArticulo.CurrentRow.DataBoundItem;
+            cargarImagen(urlImg);
         }
     }
 }
