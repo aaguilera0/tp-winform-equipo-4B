@@ -21,14 +21,19 @@ namespace TPWinForm_equipo_4B
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            cargar();
+
+        }
+
+        private void cargar()
+        {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            listaArticulo= negocio.Listar();
+            listaArticulo = negocio.Listar();
             dgvArticulo.DataSource = listaArticulo;
             cargarImagen(listaArticulo[0].imagen.ImagenUrl);
             //dgvArticulo.Columns["IdCategoria"].Visible = false;
             //dgvArticulo.Columns["IdMarca"].Visible = false;
             dgvArticulo.Columns["imagen"].Visible = false;
-
         }
 
         private void dgvArticulo_SelectionChanged(object sender, EventArgs e)
@@ -55,6 +60,7 @@ namespace TPWinForm_equipo_4B
         {
             frmAgregarArticulo alta = new frmAgregarArticulo();
             alta.ShowDialog();
+            cargar();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -63,6 +69,7 @@ namespace TPWinForm_equipo_4B
             seleccionado = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
             frmAgregarArticulo modificar = new frmAgregarArticulo(seleccionado);
             modificar.ShowDialog();
+            cargar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -78,6 +85,7 @@ namespace TPWinForm_equipo_4B
                     seleccionado = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
                     negocio.Eliminar(seleccionado.Id);
                     MessageBox.Show("Eliminado exitosamente.");
+                    cargar();
                 }
             }
             catch (Exception ex)
@@ -88,7 +96,8 @@ namespace TPWinForm_equipo_4B
         }
 
         
-    }
+        }
 }
+
 
 
