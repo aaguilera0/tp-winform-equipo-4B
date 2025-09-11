@@ -72,9 +72,13 @@ namespace TPWinForm_equipo_4B
             Articulo seleccionado;
             try
             {
-                seleccionado = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
-                negocio.Eliminar(seleccionado.Id);
-                MessageBox.Show("Eliminado exitosamente.");
+                DialogResult respuesta = MessageBox.Show("CONFIRMAR ELIMINACION", "Eliminado", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                { 
+                    seleccionado = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
+                    negocio.Eliminar(seleccionado.Id);
+                    MessageBox.Show("Eliminado exitosamente.");
+                }
             }
             catch (Exception ex)
             {
