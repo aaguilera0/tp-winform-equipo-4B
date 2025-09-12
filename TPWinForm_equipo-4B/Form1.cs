@@ -95,8 +95,15 @@ namespace TPWinForm_equipo_4B
             }
         }
 
-        
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+            Articulo articuloSeleccionado = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
+
+            frmArticuloDetalle detalle = new frmArticuloDetalle(articuloSeleccionado);
+            
+            detalle.ShowDialog();
         }
+    }
 }
 
 

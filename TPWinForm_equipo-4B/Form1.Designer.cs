@@ -34,6 +34,7 @@ namespace TPWinForm_equipo_4B
             this.bttAgregar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.btnDetalle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbArticulo)).BeginInit();
             this.SuspendLayout();
@@ -46,15 +47,15 @@ namespace TPWinForm_equipo_4B
             this.dgvArticulo.MultiSelect = false;
             this.dgvArticulo.Name = "dgvArticulo";
             this.dgvArticulo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulo.Size = new System.Drawing.Size(553, 180);
+            this.dgvArticulo.Size = new System.Drawing.Size(480, 305);
             this.dgvArticulo.TabIndex = 0;
             this.dgvArticulo.SelectionChanged += new System.EventHandler(this.dgvArticulo_SelectionChanged);
             // 
             // pcbArticulo
             // 
-            this.pcbArticulo.Location = new System.Drawing.Point(571, 12);
+            this.pcbArticulo.Location = new System.Drawing.Point(531, 53);
             this.pcbArticulo.Name = "pcbArticulo";
-            this.pcbArticulo.Size = new System.Drawing.Size(217, 180);
+            this.pcbArticulo.Size = new System.Drawing.Size(245, 217);
             this.pcbArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcbArticulo.TabIndex = 1;
             this.pcbArticulo.TabStop = false;
@@ -89,11 +90,22 @@ namespace TPWinForm_equipo_4B
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
+            // btnDetalle
+            // 
+            this.btnDetalle.Location = new System.Drawing.Point(473, 378);
+            this.btnDetalle.Name = "btnDetalle";
+            this.btnDetalle.Size = new System.Drawing.Size(92, 31);
+            this.btnDetalle.TabIndex = 5;
+            this.btnDetalle.Text = "Ver Detalle";
+            this.btnDetalle.UseVisualStyleBackColor = true;
+            this.btnDetalle.Click += new System.EventHandler(this.btnDetalle_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnDetalle);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.bttAgregar);
@@ -115,6 +127,7 @@ namespace TPWinForm_equipo_4B
         private System.Windows.Forms.Button bttAgregar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnDetalle;
     }
 }
 
