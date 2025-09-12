@@ -22,7 +22,6 @@ namespace TPWinForm_equipo_4B
         private void Form1_Load(object sender, EventArgs e)
         {
             cargar();
-
         }
 
         private void cargar()
@@ -34,6 +33,13 @@ namespace TPWinForm_equipo_4B
             //dgvArticulo.Columns["IdCategoria"].Visible = false;
             //dgvArticulo.Columns["IdMarca"].Visible = false;
             dgvArticulo.Columns["imagen"].Visible = false;
+            dgvArticulo.Columns["Descripcion"].Visible = false;
+            dgvArticulo.Columns["Id"].Visible = false;
+            //CAMBIAR NOMBRES DE COLUMNAS DEL DGV
+            dgvArticulo.Columns["IdMarca"].HeaderText = "Marca";
+            dgvArticulo.Columns["IdCategoria"].HeaderText = "Categoría";
+            dgvArticulo.Columns["Codigo"].HeaderText = "Código";
+            //dgvArticulo.Columns["Descripcion"].HeaderText = "Descripción";
         }
 
         private void dgvArticulo_SelectionChanged(object sender, EventArgs e)

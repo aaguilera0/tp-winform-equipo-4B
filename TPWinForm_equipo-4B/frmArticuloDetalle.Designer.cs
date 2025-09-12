@@ -29,6 +29,7 @@ namespace TPWinForm_equipo_4B
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmArticuloDetalle));
             this.lbCodigoD = new System.Windows.Forms.Label();
             this.lbCodigoD2 = new System.Windows.Forms.Label();
             this.lbNombreD = new System.Windows.Forms.Label();
@@ -193,8 +194,14 @@ namespace TPWinForm_equipo_4B
             this.Controls.Add(this.lbNombreD);
             this.Controls.Add(this.lbCodigoD2);
             this.Controls.Add(this.lbCodigoD);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(555, 557);
+            this.MinimumSize = new System.Drawing.Size(555, 557);
             this.Name = "frmArticuloDetalle";
-            this.Text = "frmArticuloDetalle";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Detalle de Artículo";
             this.Load += new System.EventHandler(this.frmArticuloDetalle_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenD)).EndInit();
             this.ResumeLayout(false);
