@@ -20,7 +20,6 @@ namespace negocio
         {
 
             conexion = new SqlConnection("Server = localhost, 1433; Database = CATALOGO_P3_DB; User Id = sa; Password = BaseDeDatos#2;TrustServerCertificate=True;");
-            //conexion = new SqlConnection("Server = localhost, 1433; Database = CATALOGO_P3_DB; User Id = sa; Password = Facu-123456;TrustServerCertificate=True;");
             comando = new SqlCommand();
             
         }
