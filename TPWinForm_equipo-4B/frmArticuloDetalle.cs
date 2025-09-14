@@ -32,7 +32,7 @@ namespace TPWinForm_equipo_4B
 
             try
             {
-                pbImagenD.Load(articuloAux.imagen.ImagenUrl);
+                pbImagenD.Load(articuloAux.Imagen[0].ImagenUrl);
             }
             catch
             {

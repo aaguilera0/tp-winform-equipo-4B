@@ -15,6 +15,8 @@ namespace negocio
         {
             List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
+            Articulo artAct = null;
+            int idArtAct = -1, idNuenoArt = -1;
 
             try
             {
@@ -23,25 +25,34 @@ namespace negocio
 
                 while (datos.Lector.Read())
                 {
-                    Articulo aux = new Articulo();
-                    aux.Id = datos.Lector.GetInt32(0);
-                    aux.Codigo = datos.Lector.GetString(1);
-                    aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];
-                    aux.IdMarca = new Marca();
-                    aux.IdMarca.Id = (int)datos.Lector["IdMarca"];
-                    aux.IdMarca.Descripcion = (string)datos.Lector["Marca"];
-                    aux.IdCategoria = new Categoria();
-                    aux.IdCategoria.Id = (int)datos.Lector["IdCategoria"];
-                    aux.IdCategoria.Descripcion = (string)datos.Lector["Categoria"];
-                    aux.Precio = (decimal)datos.Lector["Precio"];
-                    aux.imagen = new Imagen();
-                    aux.imagen.ImagenUrl = (string)datos.Lector["ImagenUrl"];
-
-                    lista.Add(aux);
+                    idNuenoArt = datos.Lector.GetInt32(0);
+                    if (idArtAct != idNuenoArt)
+                    {
+                        if (idArtAct != -1) lista.Add(artAct);
+                        artAct = new Articulo();
+                        idArtAct = idNuenoArt;
+                        artAct.Id = idNuenoArt;
+                        artAct.Codigo = datos.Lector.GetString(1);
+                        artAct.Nombre = (string)datos.Lector["Nombre"];
+                        artAct.Descripcion = (string)datos.Lector["Descripcion"];
+                        artAct.IdMarca = new Marca();
+                        artAct.IdMarca.Id = (int)datos.Lector["IdMarca"];
+                        artAct.IdMarca.Descripcion = (string)datos.Lector["Marca"];
+                        artAct.IdCategoria = new Categoria();
+                        artAct.IdCategoria.Id = (int)datos.Lector["IdCategoria"];
+                        artAct.IdCategoria.Descripcion = (string)datos.Lector["Categoria"];
+                        artAct.Precio = (decimal)datos.Lector["Precio"];
+                    }
+                    Imagen auxImagen = new Imagen();
+                    auxImagen.IdArticulo = (int)datos.Lector["Id"];
+                    auxImagen.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+                    artAct.Imagen.Add(auxImagen);
                 }
 
+                if (idArtAct != -1) lista.Add(artAct);
+
                 return lista;
+
             }
             catch (Exception ex)
             {

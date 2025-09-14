@@ -29,10 +29,10 @@ namespace TPWinForm_equipo_4B
             ArticuloNegocio negocio = new ArticuloNegocio();
             listaArticulo = negocio.Listar();
             dgvArticulo.DataSource = listaArticulo;
-            cargarImagen(listaArticulo[0].imagen.ImagenUrl);
+            cargarImagen(listaArticulo[0].Imagen[0].ImagenUrl);
             //dgvArticulo.Columns["IdCategoria"].Visible = false;
             //dgvArticulo.Columns["IdMarca"].Visible = false;
-            dgvArticulo.Columns["imagen"].Visible = false;
+            //dgvArticulo.Columns["imagen"].Visible = false;
             dgvArticulo.Columns["Descripcion"].Visible = false;
             dgvArticulo.Columns["Id"].Visible = false;
             //CAMBIAR NOMBRES DE COLUMNAS DEL DGV
@@ -46,7 +46,7 @@ namespace TPWinForm_equipo_4B
         {
 
             Articulo Selecionado = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
-            cargarImagen(Selecionado.imagen.ImagenUrl);
+            cargarImagen(Selecionado.Imagen[0].ImagenUrl);
         }
 
         private void cargarImagen(String imagen)

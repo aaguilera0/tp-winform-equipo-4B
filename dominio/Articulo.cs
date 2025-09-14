@@ -8,6 +8,10 @@ namespace dominio
 {
     public class Articulo
     {
+        public Articulo() 
+        {
+            Imagen = new List<Imagen>();
+        }
         public int Id { get; set; }
         public string Codigo { get; set; }
         public string Nombre { get; set; }
@@ -16,6 +20,6 @@ namespace dominio
         public Categoria IdCategoria { get; set; }
         public decimal Precio { get; set; }
 
-        public Imagen imagen { get; set; }  
+        public List<Imagen> Imagen { get; set; }  
     }
 }
