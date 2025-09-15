@@ -45,6 +45,8 @@ namespace TPWinForm_equipo_4B
             this.lblFiltro = new System.Windows.Forms.Label();
             this.txtFiltroAvanzado = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnImgDer = new System.Windows.Forms.Button();
+            this.btnImgIzq = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbArticulo)).BeginInit();
             this.SuspendLayout();
@@ -199,12 +201,38 @@ namespace TPWinForm_equipo_4B
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
+            // btnImgDer
+            // 
+            this.btnImgDer.BackColor = System.Drawing.Color.Wheat;
+            this.btnImgDer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImgDer.Location = new System.Drawing.Point(702, 339);
+            this.btnImgDer.Name = "btnImgDer";
+            this.btnImgDer.Size = new System.Drawing.Size(24, 24);
+            this.btnImgDer.TabIndex = 15;
+            this.btnImgDer.Text = ">";
+            this.btnImgDer.UseVisualStyleBackColor = false;
+            this.btnImgDer.Click += new System.EventHandler(this.btnImgDer_Click);
+            // 
+            // btnImgIzq
+            // 
+            this.btnImgIzq.BackColor = System.Drawing.Color.Wheat;
+            this.btnImgIzq.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImgIzq.Location = new System.Drawing.Point(607, 339);
+            this.btnImgIzq.Name = "btnImgIzq";
+            this.btnImgIzq.Size = new System.Drawing.Size(24, 24);
+            this.btnImgIzq.TabIndex = 16;
+            this.btnImgIzq.Text = "<";
+            this.btnImgIzq.UseVisualStyleBackColor = false;
+            this.btnImgIzq.Click += new System.EventHandler(this.btnImgIzq_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnImgIzq);
+            this.Controls.Add(this.btnImgDer);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtFiltroAvanzado);
             this.Controls.Add(this.lblFiltro);
@@ -252,6 +280,8 @@ namespace TPWinForm_equipo_4B
         private System.Windows.Forms.Label lblFiltro;
         private System.Windows.Forms.TextBox txtFiltroAvanzado;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button btnImgDer;
+        private System.Windows.Forms.Button btnImgIzq;
     }
 }
 

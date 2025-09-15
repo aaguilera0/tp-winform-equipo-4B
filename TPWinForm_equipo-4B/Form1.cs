@@ -14,6 +14,7 @@ namespace TPWinForm_equipo_4B
     public partial class Form1 : Form
     {
         private List<Articulo> listaArticulo;
+        private int indiceAuxArticulo, cantImagenes;
         public Form1()
         {
             InitializeComponent();
@@ -38,8 +39,9 @@ namespace TPWinForm_equipo_4B
             //dgvArticulo.Columns["imagen"].Visible = false;
             ocultarColumnas();
             //CAMBIAR NOMBRES DE COLUMNAS DEL DGV
-           
+
             //dgvArticulo.Columns["Descripcion"].HeaderText = "Descripción";
+            visualizarBotonesImagenes(listaArticulo[0]);
         }
 
         private void ocultarColumnas()
@@ -58,6 +60,7 @@ namespace TPWinForm_equipo_4B
             {
                 Articulo Selecionado = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
                 cargarImagen(Selecionado.Imagen[0].ImagenUrl);
+                visualizarBotonesImagenes(Selecionado);
             }
         }
 
@@ -192,6 +195,59 @@ namespace TPWinForm_equipo_4B
 
 
         }
+
+        private void btnImgDer_Click(object sender, EventArgs e)
+        {
+            if (indiceAuxArticulo == cantImagenes - 1)
+            {
+                indiceAuxArticulo = 0;
+            }
+            else
+            {
+                indiceAuxArticulo++;
+            }
+            Articulo Selecionado = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
+            cargarImagen(Selecionado.Imagen[indiceAuxArticulo].ImagenUrl);
+        }
+
+        private void btnImgIzq_Click(object sender, EventArgs e)
+        {
+            if (indiceAuxArticulo == 0)
+            {
+                indiceAuxArticulo = cantImagenes - 1;
+            }
+            else
+            {
+                indiceAuxArticulo--;
+            }
+            Articulo Selecionado = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
+            cargarImagen(Selecionado.Imagen[indiceAuxArticulo].ImagenUrl);
+        }
+
+        private void visualizarBotonesImagenes(Articulo articulo)
+        {
+            indiceAuxArticulo = 0;
+            try
+            {
+                cantImagenes = articulo.Imagen.Count;
+                if (cantImagenes == 1)
+                {
+                    btnImgDer.Visible = false;
+                    btnImgIzq.Visible = false;
+                }
+                else
+                {
+                    btnImgDer.Visible = true;
+                    btnImgIzq.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
     }
 }
 

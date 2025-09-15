@@ -20,7 +20,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("SELECT A.Id, Codigo, Nombre, A.Descripcion, IdMarca, IdCategoria, Precio, E.ImagenUrl, M.Descripcion Marca, C.Descripcion Categoria FROM ARTICULOS A, IMAGENES E, MARCAS M, CATEGORIAS C WHERE E.IdArticulo = A.Id AND A.IdMarca = M.Id AND A.IdCategoria = C.Id");
+                datos.setearConsulta("SELECT A.Id, Codigo, Nombre, A.Descripcion, IdMarca, IdCategoria, Precio, E.ImagenUrl, M.Descripcion Marca, C.Descripcion Categoria, E.Id IdImagenes FROM ARTICULOS A, IMAGENES E, MARCAS M, CATEGORIAS C WHERE E.IdArticulo = A.Id AND A.IdMarca = M.Id AND A.IdCategoria = C.Id order by A.Id");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
