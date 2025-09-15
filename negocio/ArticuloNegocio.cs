@@ -44,6 +44,7 @@ namespace negocio
                         artAct.Precio = (decimal)datos.Lector["Precio"];
                     }
                     Imagen auxImagen = new Imagen();
+                    auxImagen.ID = (int)datos.Lector["IdImagenes"];
                     auxImagen.IdArticulo = (int)datos.Lector["Id"];
                     auxImagen.ImagenUrl = (string)datos.Lector["ImagenUrl"];
                     artAct.Imagen.Add(auxImagen);

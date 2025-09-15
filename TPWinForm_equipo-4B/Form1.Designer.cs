@@ -47,15 +47,20 @@ namespace TPWinForm_equipo_4B
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnImgDer = new System.Windows.Forms.Button();
             this.btnImgIzq = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.administracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.marcasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoríasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbArticulo)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvArticulo
             // 
             this.dgvArticulo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulo.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvArticulo.Location = new System.Drawing.Point(12, 96);
+            this.dgvArticulo.Location = new System.Drawing.Point(15, 135);
             this.dgvArticulo.MultiSelect = false;
             this.dgvArticulo.Name = "dgvArticulo";
             this.dgvArticulo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -65,7 +70,7 @@ namespace TPWinForm_equipo_4B
             // 
             // pcbArticulo
             // 
-            this.pcbArticulo.Location = new System.Drawing.Point(543, 96);
+            this.pcbArticulo.Location = new System.Drawing.Point(546, 135);
             this.pcbArticulo.Name = "pcbArticulo";
             this.pcbArticulo.Size = new System.Drawing.Size(245, 217);
             this.pcbArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -76,7 +81,7 @@ namespace TPWinForm_equipo_4B
             // 
             this.bttAgregar.BackColor = System.Drawing.Color.Wheat;
             this.bttAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttAgregar.Location = new System.Drawing.Point(15, 407);
+            this.bttAgregar.Location = new System.Drawing.Point(18, 446);
             this.bttAgregar.Name = "bttAgregar";
             this.bttAgregar.Size = new System.Drawing.Size(92, 31);
             this.bttAgregar.TabIndex = 2;
@@ -88,7 +93,7 @@ namespace TPWinForm_equipo_4B
             // 
             this.btnEliminar.BackColor = System.Drawing.Color.Wheat;
             this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliminar.Location = new System.Drawing.Point(211, 407);
+            this.btnEliminar.Location = new System.Drawing.Point(214, 446);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(92, 31);
             this.btnEliminar.TabIndex = 3;
@@ -100,7 +105,7 @@ namespace TPWinForm_equipo_4B
             // 
             this.btnModificar.BackColor = System.Drawing.Color.Wheat;
             this.btnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnModificar.Location = new System.Drawing.Point(113, 407);
+            this.btnModificar.Location = new System.Drawing.Point(116, 446);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(92, 31);
             this.btnModificar.TabIndex = 4;
@@ -112,7 +117,7 @@ namespace TPWinForm_equipo_4B
             // 
             this.btnDetalle.BackColor = System.Drawing.Color.Wheat;
             this.btnDetalle.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDetalle.Location = new System.Drawing.Point(436, 407);
+            this.btnDetalle.Location = new System.Drawing.Point(439, 446);
             this.btnDetalle.Name = "btnDetalle";
             this.btnDetalle.Size = new System.Drawing.Size(92, 31);
             this.btnDetalle.TabIndex = 5;
@@ -123,7 +128,7 @@ namespace TPWinForm_equipo_4B
             // lblBusqueda
             // 
             this.lblBusqueda.AutoSize = true;
-            this.lblBusqueda.Location = new System.Drawing.Point(9, 9);
+            this.lblBusqueda.Location = new System.Drawing.Point(12, 48);
             this.lblBusqueda.Name = "lblBusqueda";
             this.lblBusqueda.Size = new System.Drawing.Size(98, 13);
             this.lblBusqueda.TabIndex = 6;
@@ -132,7 +137,7 @@ namespace TPWinForm_equipo_4B
             // 
             // txtFiltro
             // 
-            this.txtFiltro.Location = new System.Drawing.Point(102, 6);
+            this.txtFiltro.Location = new System.Drawing.Point(105, 45);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(179, 20);
             this.txtFiltro.TabIndex = 7;
@@ -141,7 +146,7 @@ namespace TPWinForm_equipo_4B
             // lblCampo
             // 
             this.lblCampo.AutoSize = true;
-            this.lblCampo.Location = new System.Drawing.Point(12, 50);
+            this.lblCampo.Location = new System.Drawing.Point(15, 89);
             this.lblCampo.Name = "lblCampo";
             this.lblCampo.Size = new System.Drawing.Size(40, 13);
             this.lblCampo.TabIndex = 8;
@@ -151,7 +156,7 @@ namespace TPWinForm_equipo_4B
             // 
             this.cboCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCampo.FormattingEnabled = true;
-            this.cboCampo.Location = new System.Drawing.Point(53, 47);
+            this.cboCampo.Location = new System.Drawing.Point(56, 86);
             this.cboCampo.Name = "cboCampo";
             this.cboCampo.Size = new System.Drawing.Size(121, 21);
             this.cboCampo.TabIndex = 9;
@@ -160,7 +165,7 @@ namespace TPWinForm_equipo_4B
             // lblCriterio
             // 
             this.lblCriterio.AutoSize = true;
-            this.lblCriterio.Location = new System.Drawing.Point(180, 51);
+            this.lblCriterio.Location = new System.Drawing.Point(183, 90);
             this.lblCriterio.Name = "lblCriterio";
             this.lblCriterio.Size = new System.Drawing.Size(39, 13);
             this.lblCriterio.TabIndex = 10;
@@ -170,7 +175,7 @@ namespace TPWinForm_equipo_4B
             // 
             this.cboCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCriterio.FormattingEnabled = true;
-            this.cboCriterio.Location = new System.Drawing.Point(223, 47);
+            this.cboCriterio.Location = new System.Drawing.Point(226, 86);
             this.cboCriterio.Name = "cboCriterio";
             this.cboCriterio.Size = new System.Drawing.Size(121, 21);
             this.cboCriterio.TabIndex = 11;
@@ -178,7 +183,7 @@ namespace TPWinForm_equipo_4B
             // lblFiltro
             // 
             this.lblFiltro.AutoSize = true;
-            this.lblFiltro.Location = new System.Drawing.Point(350, 50);
+            this.lblFiltro.Location = new System.Drawing.Point(353, 89);
             this.lblFiltro.Name = "lblFiltro";
             this.lblFiltro.Size = new System.Drawing.Size(80, 13);
             this.lblFiltro.TabIndex = 12;
@@ -186,14 +191,14 @@ namespace TPWinForm_equipo_4B
             // 
             // txtFiltroAvanzado
             // 
-            this.txtFiltroAvanzado.Location = new System.Drawing.Point(436, 48);
+            this.txtFiltroAvanzado.Location = new System.Drawing.Point(439, 87);
             this.txtFiltroAvanzado.Name = "txtFiltroAvanzado";
             this.txtFiltroAvanzado.Size = new System.Drawing.Size(100, 20);
             this.txtFiltroAvanzado.TabIndex = 13;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(543, 48);
+            this.btnBuscar.Location = new System.Drawing.Point(546, 87);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 14;
@@ -205,7 +210,7 @@ namespace TPWinForm_equipo_4B
             // 
             this.btnImgDer.BackColor = System.Drawing.Color.Wheat;
             this.btnImgDer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnImgDer.Location = new System.Drawing.Point(702, 339);
+            this.btnImgDer.Location = new System.Drawing.Point(705, 378);
             this.btnImgDer.Name = "btnImgDer";
             this.btnImgDer.Size = new System.Drawing.Size(24, 24);
             this.btnImgDer.TabIndex = 15;
@@ -217,7 +222,7 @@ namespace TPWinForm_equipo_4B
             // 
             this.btnImgIzq.BackColor = System.Drawing.Color.Wheat;
             this.btnImgIzq.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnImgIzq.Location = new System.Drawing.Point(607, 339);
+            this.btnImgIzq.Location = new System.Drawing.Point(610, 378);
             this.btnImgIzq.Name = "btnImgIzq";
             this.btnImgIzq.Size = new System.Drawing.Size(24, 24);
             this.btnImgIzq.TabIndex = 16;
@@ -225,12 +230,45 @@ namespace TPWinForm_equipo_4B
             this.btnImgIzq.UseVisualStyleBackColor = false;
             this.btnImgIzq.Click += new System.EventHandler(this.btnImgIzq_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.administracionToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 17;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // administracionToolStripMenuItem
+            // 
+            this.administracionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.marcasToolStripMenuItem,
+            this.categoríasToolStripMenuItem});
+            this.administracionToolStripMenuItem.Name = "administracionToolStripMenuItem";
+            this.administracionToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
+            this.administracionToolStripMenuItem.Text = "Administracion";
+            // 
+            // marcasToolStripMenuItem
+            // 
+            this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
+            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.marcasToolStripMenuItem.Text = "Marcas";
+            this.marcasToolStripMenuItem.Click += new System.EventHandler(this.marcasToolStripMenuItem_Click);
+            // 
+            // categoríasToolStripMenuItem
+            // 
+            this.categoríasToolStripMenuItem.Name = "categoríasToolStripMenuItem";
+            this.categoríasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.categoríasToolStripMenuItem.Text = "Categorías";
+            this.categoríasToolStripMenuItem.Click += new System.EventHandler(this.categoríasToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 491);
             this.Controls.Add(this.btnImgIzq);
             this.Controls.Add(this.btnImgDer);
             this.Controls.Add(this.btnBuscar);
@@ -248,16 +286,20 @@ namespace TPWinForm_equipo_4B
             this.Controls.Add(this.bttAgregar);
             this.Controls.Add(this.pcbArticulo);
             this.Controls.Add(this.dgvArticulo);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(816, 489);
-            this.MinimumSize = new System.Drawing.Size(816, 489);
+            this.MaximumSize = new System.Drawing.Size(816, 530);
+            this.MinimumSize = new System.Drawing.Size(816, 530);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listado de Artículos";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbArticulo)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,6 +324,10 @@ namespace TPWinForm_equipo_4B
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnImgDer;
         private System.Windows.Forms.Button btnImgIzq;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem administracionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem marcasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem categoríasToolStripMenuItem;
     }
 }
 

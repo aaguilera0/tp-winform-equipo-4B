@@ -224,6 +224,18 @@ namespace TPWinForm_equipo_4B
             cargarImagen(Selecionado.Imagen[indiceAuxArticulo].ImagenUrl);
         }
 
+        private void marcasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmABMMarcas frmABMMarcas = new frmABMMarcas();
+            frmABMMarcas.ShowDialog();
+            cargar();
+        }
+
+        private void categoríasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void visualizarBotonesImagenes(Articulo articulo)
         {
             indiceAuxArticulo = 0;

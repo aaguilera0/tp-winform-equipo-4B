@@ -34,5 +34,30 @@ namespace negocio
                 }
             }
         }
+
+        public void Eliminar(List<int> listUrlImgBorrar)
+        {
+
+            foreach (int id in listUrlImgBorrar)
+            {
+                AccesoDatos datos = new AccesoDatos();
+                try 
+                {
+                    datos.setearConsulta("Delete from IMAGENES where Id = @ID");
+                    datos.setearParametro("@ID", id);
+                    datos.ejecutarAccion();
+
+                } 
+                catch (Exception ex) 
+                { 
+                    throw ex;
+                }
+                finally
+                {
+                    datos.cerrarConexion();
+                }
+            }
+
+        }
     }
 }

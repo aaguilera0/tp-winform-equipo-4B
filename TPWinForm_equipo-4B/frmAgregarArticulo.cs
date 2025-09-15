@@ -1,4 +1,6 @@
-﻿using System;
+﻿using dominio;
+using negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,19 +9,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using dominio;
-using negocio;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace TPWinForm_equipo_4B
 {
     public partial class frmAgregarArticulo : Form
     {
         private Articulo articulo = null;
-        List<String> listUrlImg = new List<String>();
+        private List<Imagen> listImagen = new List<Imagen>();
+        private List<int> listUrlImgBorrar = new List<int>();
+
         public frmAgregarArticulo()
         {
+
             InitializeComponent();
-            
+            dgvArticulo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
         }
 
         public frmAgregarArticulo(Articulo articulo)
@@ -27,7 +32,8 @@ namespace TPWinForm_equipo_4B
             InitializeComponent();
             this.articulo = articulo;
             Text = "Modificar Articulo";
-            
+            dgvArticulo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -39,7 +45,7 @@ namespace TPWinForm_equipo_4B
         {
             
             ArticuloNegocio negocio = new ArticuloNegocio();
-            ImagenNegocio negocioImg = new negocio.ImagenNegocio();
+            ImagenNegocio negocioImg = new ImagenNegocio();
             int idArticulo = 0;
 
             try
@@ -52,10 +58,16 @@ namespace TPWinForm_equipo_4B
                 articulo.IdMarca = (Marca)cbMarca.SelectedItem;
                 articulo.IdCategoria = (Categoria)cbCategoria.SelectedItem;
                 articulo.Precio = decimal.Parse(txtPrecio.Text);
+                List<String> listUrlImg = new List<String>();
+                listUrlImg = cargarImagenParaCrear();
 
                 if (articulo.Id != 0){
 
                     negocio.Modificar(articulo);
+
+                    if (listUrlImg.Count > 0) negocioImg.Agregar(listUrlImg, articulo.Id);
+                    if (listUrlImgBorrar.Count > 0) negocioImg.Eliminar(listUrlImgBorrar);                    
+
                     MessageBox.Show("Modificado exitosamente.");
 
                 }
@@ -64,6 +76,7 @@ namespace TPWinForm_equipo_4B
                     negocio.Agregar(articulo);
                     idArticulo = negocio.ObtenerIdArticulo(articulo);
                     negocioImg.Agregar(listUrlImg, idArticulo);
+                    
                     MessageBox.Show("Agregado exitosamente.");
 
                 }
@@ -76,6 +89,27 @@ namespace TPWinForm_equipo_4B
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private List<String> cargarImagenParaCrear()
+        {
+            List <String> listUrlImgAux = new List<String>();
+            int cantImagen = listImagen.Count;
+            try 
+            {
+                for (int i = 0; i < cantImagen; i++)
+                {
+                    if (listImagen[i].ID == -1)
+                    {
+                        listUrlImgAux.Add(listImagen[i].ImagenUrl);
+                    }
+                }
+                return listUrlImgAux;
+            }
+            catch(Exception ex) 
+            { 
+                throw ex;
+            }            
         }
 
         private void frmAgregarArticulo_Load(object sender, EventArgs e)
@@ -103,6 +137,8 @@ namespace TPWinForm_equipo_4B
                     txtPrecio.Text = articulo.Precio.ToString();
                     cbMarca.SelectedValue = articulo.IdMarca.Id;
                     cbCategoria.SelectedValue = articulo.IdCategoria.Id;
+                    listImagen = articulo.Imagen.ToList();
+                    cargarDGV();
                 }
             }
             catch (Exception ex)
@@ -120,7 +156,10 @@ namespace TPWinForm_equipo_4B
                 }
                 else {
 
-                    listUrlImg.Add(txtUrlImagen.Text);                                     
+                    Imagen auxImage = new Imagen();
+                    auxImage.ID = -1;
+                    auxImage.ImagenUrl = txtUrlImagen.Text;
+                    listImagen.Add(auxImage);
                     cargarDGV();
                     txtUrlImagen.Clear();
 
@@ -135,14 +174,44 @@ namespace TPWinForm_equipo_4B
 
         private void cargarDGV()
         {
-            int ultimoIndiceList = listUrlImg.Count - 1;
-            dgvArticulo.DataSource = null;
-            dgvArticulo.DataSource = listUrlImg;
-            dgvArticulo.ClearSelection();
-            dgvArticulo.Rows[ultimoIndiceList].Selected = true;
-            dgvArticulo.CurrentCell = dgvArticulo.Rows[ultimoIndiceList].Cells[0];
-            dgvArticulo.FirstDisplayedScrollingRowIndex = ultimoIndiceList;
-            cargarImagen(listUrlImg[ultimoIndiceList]);
+            try 
+            {
+
+                dgvArticulo.DataSource = null;
+                dgvArticulo.DataSource = listImagen;
+
+                ocultarColumnas();
+
+                if (listImagen.Count == 0)
+                {
+                    dgvArticulo.ClearSelection();
+                    pbArticulo.Image = null;
+                    return;
+                }
+
+                if (dgvArticulo.Rows.Count == listImagen.Count)
+                {
+                    int ultimoIndiceList = listImagen.Count - 1;
+                    int colImagenUrl = dgvArticulo.Columns["ImagenUrl"].Index;
+                    dgvArticulo.CurrentCell = dgvArticulo[colImagenUrl, ultimoIndiceList];
+                    dgvArticulo.FirstDisplayedScrollingRowIndex = ultimoIndiceList;                    
+                    Imagen imagen = (Imagen)dgvArticulo.CurrentRow.DataBoundItem;
+                    cargarImagen(imagen.ImagenUrl);
+                    
+                }
+
+            }
+            catch (Exception ex)
+            { 
+                throw ex;
+            }
+        }
+
+        private void ocultarColumnas()
+        {
+            dgvArticulo.Columns["ID"].Visible = false;
+            dgvArticulo.Columns["IdArticulo"].Visible = false;
+
         }
 
         private void cargarImagen(String imagen)
@@ -161,11 +230,13 @@ namespace TPWinForm_equipo_4B
         {
             try {
 
-                if (listUrlImg.Count > 0) {
+                if (listImagen.Count > 0)
+                {
 
-                    string urlImgBorrar = (string)dgvArticulo.CurrentRow.DataBoundItem; // o el índice correcto de columna
-                    int auxInd = listUrlImg.IndexOf(urlImgBorrar);
-                    listUrlImg.RemoveAt(auxInd);
+                    Imagen imagen = (Imagen)dgvArticulo.CurrentRow.DataBoundItem;
+                    if (imagen.ID > 0) listUrlImgBorrar.Add(imagen.ID); 
+                    int auxInd = indiceImagenPorBorrar(imagen.ImagenUrl);
+                    listImagen.RemoveAt(auxInd);
                     cargarDGV();
 
                 }
@@ -182,10 +253,38 @@ namespace TPWinForm_equipo_4B
             }
         }
 
+        private int indiceImagenPorBorrar(String imagenPorBorrar) 
+        {
+            int cantIndice = listImagen.Count;
+            for (int i = 0; i < cantIndice; i++)
+            {
+                if (listImagen[i].ImagenUrl.Equals(imagenPorBorrar))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
         private void dgvArticulo_SelectionChanged(object sender, EventArgs e)
         {
-            string urlImg = (string)dgvArticulo.CurrentRow.DataBoundItem;
-            cargarImagen(urlImg);
+            try
+            {
+                if (dgvArticulo.Rows.Count == listImagen.Count) 
+                {
+                    if (dgvArticulo.CurrentRow != null) 
+                    {
+                        Imagen imagen = (Imagen)dgvArticulo.CurrentRow.DataBoundItem;
+                        cargarImagen(imagen.ImagenUrl);
+                    }
+                }                
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
     }
 }

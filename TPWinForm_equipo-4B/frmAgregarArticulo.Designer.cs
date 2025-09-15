@@ -98,7 +98,7 @@ namespace TPWinForm_equipo_4B
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombre.Location = new System.Drawing.Point(89, 141);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(67, 16);
+            this.lblNombre.Size = new System.Drawing.Size(66, 16);
             this.lblNombre.TabIndex = 7;
             this.lblNombre.Text = "Nombre:";
             // 
@@ -217,6 +217,7 @@ namespace TPWinForm_equipo_4B
             this.dgvArticulo.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvArticulo.Location = new System.Drawing.Point(348, 101);
             this.dgvArticulo.Name = "dgvArticulo";
+            this.dgvArticulo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulo.Size = new System.Drawing.Size(246, 174);
             this.dgvArticulo.TabIndex = 19;
             this.dgvArticulo.SelectionChanged += new System.EventHandler(this.dgvArticulo_SelectionChanged);
