@@ -22,6 +22,9 @@ namespace TPWinForm_equipo_4B
         private void Form1_Load(object sender, EventArgs e)
         {
             cargar();
+            cboCampo.Items.Add("Código");
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Precio");
         }
 
         private void cargar()
@@ -126,6 +129,12 @@ namespace TPWinForm_equipo_4B
 
         private void btnFiltro_Click(object sender, EventArgs e)
         {
+          
+
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
             List<Articulo> listafiltrada;
             string filtro = txtFiltro.Text;
 
@@ -139,6 +148,48 @@ namespace TPWinForm_equipo_4B
             dgvArticulo.DataSource = null;
             dgvArticulo.DataSource = listafiltrada;
             ocultarColumnas();
+
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cboCampo.SelectedItem.ToString();
+            if (opcion == "Código" || opcion == "Precio")
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a");
+                cboCriterio.Items.Add("Igual a");
+
+            }
+            else
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Comienza con");
+                cboCriterio.Items.Add("Termina con");
+                cboCriterio.Items.Add("Contiene");
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                string campo = cboCampo.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem.ToString();
+                string filtro = txtFiltroAvanzado.Text;
+
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                dgvArticulo.DataSource = negocio.Filtrar(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+            
+
 
         }
     }

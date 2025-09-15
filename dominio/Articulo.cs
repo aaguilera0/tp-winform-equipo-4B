@@ -20,6 +20,11 @@ namespace dominio
         public Categoria IdCategoria { get; set; }
         public decimal Precio { get; set; }
 
-        public List<Imagen> Imagen { get; set; }  
+        public List<Imagen> Imagen { get; set; }
+
+        public static object filtrar(string campo, string criterio, string filtro)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
