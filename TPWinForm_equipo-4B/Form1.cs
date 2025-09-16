@@ -236,6 +236,18 @@ namespace TPWinForm_equipo_4B
 
         }
 
+        private void btnListarCategorias_Click(object sender, EventArgs e)
+        {
+            frmABMCategorias categorias = new frmABMCategorias();
+            categorias.ShowDialog();
+        }
+
+        private void btnListarMarcas_Click(object sender, EventArgs e)
+        {
+            frmABMMarcas marcas = new frmABMMarcas();
+            marcas.ShowDialog();
+        }
+
         private void visualizarBotonesImagenes(Articulo articulo)
         {
             indiceAuxArticulo = 0;

@@ -51,6 +51,8 @@ namespace TPWinForm_equipo_4B
             this.administracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.marcasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoríasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnListarCategorias = new System.Windows.Forms.Button();
+            this.btnListarMarcas = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbArticulo)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -83,7 +85,7 @@ namespace TPWinForm_equipo_4B
             this.bttAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttAgregar.Location = new System.Drawing.Point(18, 446);
             this.bttAgregar.Name = "bttAgregar";
-            this.bttAgregar.Size = new System.Drawing.Size(92, 31);
+            this.bttAgregar.Size = new System.Drawing.Size(92, 40);
             this.bttAgregar.TabIndex = 2;
             this.bttAgregar.Text = "Agregar";
             this.bttAgregar.UseVisualStyleBackColor = false;
@@ -95,7 +97,7 @@ namespace TPWinForm_equipo_4B
             this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEliminar.Location = new System.Drawing.Point(214, 446);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(92, 31);
+            this.btnEliminar.Size = new System.Drawing.Size(92, 40);
             this.btnEliminar.TabIndex = 3;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
@@ -107,7 +109,7 @@ namespace TPWinForm_equipo_4B
             this.btnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnModificar.Location = new System.Drawing.Point(116, 446);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(92, 31);
+            this.btnModificar.Size = new System.Drawing.Size(92, 40);
             this.btnModificar.TabIndex = 4;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
@@ -119,7 +121,7 @@ namespace TPWinForm_equipo_4B
             this.btnDetalle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDetalle.Location = new System.Drawing.Point(439, 446);
             this.btnDetalle.Name = "btnDetalle";
-            this.btnDetalle.Size = new System.Drawing.Size(92, 31);
+            this.btnDetalle.Size = new System.Drawing.Size(92, 40);
             this.btnDetalle.TabIndex = 5;
             this.btnDetalle.Text = "Ver Detalle";
             this.btnDetalle.UseVisualStyleBackColor = false;
@@ -252,16 +254,40 @@ namespace TPWinForm_equipo_4B
             // marcasToolStripMenuItem
             // 
             this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
-            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.marcasToolStripMenuItem.Text = "Marcas";
             this.marcasToolStripMenuItem.Click += new System.EventHandler(this.marcasToolStripMenuItem_Click);
             // 
             // categoríasToolStripMenuItem
             // 
             this.categoríasToolStripMenuItem.Name = "categoríasToolStripMenuItem";
-            this.categoríasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.categoríasToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.categoríasToolStripMenuItem.Text = "Categorías";
             this.categoríasToolStripMenuItem.Click += new System.EventHandler(this.categoríasToolStripMenuItem_Click);
+            // 
+            // btnListarCategorias
+            // 
+            this.btnListarCategorias.BackColor = System.Drawing.Color.Wheat;
+            this.btnListarCategorias.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnListarCategorias.Location = new System.Drawing.Point(583, 446);
+            this.btnListarCategorias.Name = "btnListarCategorias";
+            this.btnListarCategorias.Size = new System.Drawing.Size(92, 40);
+            this.btnListarCategorias.TabIndex = 18;
+            this.btnListarCategorias.Text = "Listar Categorías";
+            this.btnListarCategorias.UseVisualStyleBackColor = false;
+            this.btnListarCategorias.Click += new System.EventHandler(this.btnListarCategorias_Click);
+            // 
+            // btnListarMarcas
+            // 
+            this.btnListarMarcas.BackColor = System.Drawing.Color.Wheat;
+            this.btnListarMarcas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnListarMarcas.Location = new System.Drawing.Point(681, 446);
+            this.btnListarMarcas.Name = "btnListarMarcas";
+            this.btnListarMarcas.Size = new System.Drawing.Size(92, 40);
+            this.btnListarMarcas.TabIndex = 19;
+            this.btnListarMarcas.Text = "Listar Marcas";
+            this.btnListarMarcas.UseVisualStyleBackColor = false;
+            this.btnListarMarcas.Click += new System.EventHandler(this.btnListarMarcas_Click);
             // 
             // Form1
             // 
@@ -269,6 +295,8 @@ namespace TPWinForm_equipo_4B
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 491);
+            this.Controls.Add(this.btnListarMarcas);
+            this.Controls.Add(this.btnListarCategorias);
             this.Controls.Add(this.btnImgIzq);
             this.Controls.Add(this.btnImgDer);
             this.Controls.Add(this.btnBuscar);
@@ -328,6 +356,8 @@ namespace TPWinForm_equipo_4B
         private System.Windows.Forms.ToolStripMenuItem administracionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem marcasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoríasToolStripMenuItem;
+        private System.Windows.Forms.Button btnListarCategorias;
+        private System.Windows.Forms.Button btnListarMarcas;
     }
 }
 

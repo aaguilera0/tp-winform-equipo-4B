@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmABMMarcas));
             this.dgvMarcas = new System.Windows.Forms.DataGridView();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
@@ -87,11 +88,12 @@
             // lblMarcas
             // 
             this.lblMarcas.AutoSize = true;
-            this.lblMarcas.Location = new System.Drawing.Point(47, 277);
+            this.lblMarcas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMarcas.Location = new System.Drawing.Point(34, 273);
             this.lblMarcas.Name = "lblMarcas";
-            this.lblMarcas.Size = new System.Drawing.Size(79, 13);
+            this.lblMarcas.Size = new System.Drawing.Size(92, 13);
             this.lblMarcas.TabIndex = 7;
-            this.lblMarcas.Text = "Agregar marca:";
+            this.lblMarcas.Text = "Nombre marca:";
             // 
             // tbMarca
             // 
@@ -104,6 +106,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(359, 357);
             this.Controls.Add(this.tbMarca);
             this.Controls.Add(this.lblMarcas);
@@ -111,8 +114,13 @@
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.dgvMarcas);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(375, 396);
+            this.MinimumSize = new System.Drawing.Size(375, 396);
             this.Name = "frmABMMarcas";
-            this.Text = "Listado de marcas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Listado de Marcas";
             this.Load += new System.EventHandler(this.frmABMMarcas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).EndInit();
             this.ResumeLayout(false);

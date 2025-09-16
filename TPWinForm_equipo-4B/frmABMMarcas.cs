@@ -48,21 +48,16 @@ namespace TPWinForm_equipo_4B
                 }
                 else
                 {
-
                     MarcaNegocio negocio = new MarcaNegocio();
                     negocio.Agregar(tbMarca.Text);
                     tbMarca.Text = string.Empty;
                     MessageBox.Show("Marca nueva generada");
                     cargarDGV();                    
-
                 }
-
             }
             catch (Exception ex)
             {
-
                 throw ex;
-
             }
         }
 
@@ -75,30 +70,23 @@ namespace TPWinForm_equipo_4B
         {
             try
             {
-
                 if (listMarcas.Count > 0)
                 {
-
                     Marca marca = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
                     MarcaNegocio negocio = new MarcaNegocio();
                     negocio.Eliminar(marca.Id);
                     MessageBox.Show("Marca borrada");
                     cargarDGV();
-
                 }
                 else
                 {
-
                     MessageBox.Show("No hay marca para borrar");
-
                 }
 
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Error al borrar la marca: " + ex.Message);
-
             }
         }
 
@@ -106,7 +94,6 @@ namespace TPWinForm_equipo_4B
         {
             try
             {
-
                 dgvMarcas.DataSource = null;
                 MarcaNegocio negocio = new MarcaNegocio();
                 listMarcas = negocio.listar();
@@ -135,6 +122,5 @@ namespace TPWinForm_equipo_4B
                 throw ex;
             }
         }
-
     }
 }
